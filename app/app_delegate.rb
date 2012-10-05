@@ -1,10 +1,12 @@
 class AppDelegate
   def application(application, didFinishLaunchingWithOptions:launchOptions)
     @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
-    @window.makeKeyAndVisible
+    
+    @search_controller = SearchController.alloc.initWithNibName(nil, bundle:nil)
+    @navigation_controller = UINavigationController.alloc.initWithRootViewController(@search_controller)
 
-    controller = TapController.alloc.initWithNibName(nil, bundle: nil)
-  	@window.rootViewController = UINavigationController.alloc.initWithRootViewController(controller)
+    @window.rootViewController = @navigation_controller
+    @window.makeKeyAndVisible
 
     true
   end
